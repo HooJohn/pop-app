@@ -1,0 +1,11 @@
+{
+    "appPath": "app",
+    "appResourcesPath": "App_Resources",
+    "ios": {
+        "minVersion": "18.0",
+        "targetVersion": "18.0"
+    },
+    "android": {
+        "maxVersion": "33"
+    }
+} 

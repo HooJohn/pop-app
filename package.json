@@ -4,12 +4,26 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@nativescript/core": "~8.9.0",
-    "@nativescript/theme": "^3.1.0"
+    "@csstools/css-calc": "^2.1.2",
+    "@csstools/css-color-parser": "^3.0.8",
+    "@csstools/css-parser-algorithms": "^3.0.4",
+    "@csstools/css-tokenizer": "^3.0.3",
+    "@nativescript-community/ble": "^3.1.22",
+    "@nativescript/core": "8.9.1",
+    "@nativescript/theme": "3.0.2",
+    "nativescript-barcodescanner": "4.1.2",
+    "nativescript-http": "1.0.8"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.9.0",
-    "@nativescript/webpack": "~5.0.0",
-    "typescript": "~5.4.0"
+    "@nativescript/ios": "8.9.2",
+    "@nativescript/types": "8.6.1",
+    "@nativescript/webpack": "^5.0.18",
+    "autoprefixer": "^10.4.21",
+    "tailwindcss": "^4.0.14",
+    "typescript": "4.8.4"
+  },
+  "scripts": {
+    "clean": "ns clean",
+    "start": "ns run ios"
   }
 }

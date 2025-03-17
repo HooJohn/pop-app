@@ -7,5 +7,9 @@ export default {
   android: {
     v8Flags: '--expose_gc',
     markingMode: 'none'
+  },
+  ios: {
+    discardUncaughtJsExceptions: false,
+    SPMPackages: []
   }
 } as NativeScriptConfig;

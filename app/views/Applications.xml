@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <GridLayout rows="auto, auto, *, auto" class="container">
+        <!-- 搜索栏 -->
+        <GridLayout row="0" columns="*, auto" class="bg-gray-900 rounded-xl shadow-md mb-4 p-4">
+            <SearchBar col="0" hint="搜索应用" text="{{ searchQuery }}" 
+                      submit="onSearch" class="bg-gray-700 rounded-lg" />
+            <Button col="1" text="🔍" tap="onSearch" class="bg-blue-500 text-white ml-2" width="44" height="44" />
+        </GridLayout>
+
+        <!-- 分类标签 -->
+        <ScrollView row="1" orientation="horizontal" class="mb-4">
+            <StackLayout orientation="horizontal" class="gap-2">
+                <Button text="全部" tap="onFilterCategory" class="category-btn {{ selectedCategory === 'all' ? 'category-btn-active' : '' }}" />
+                <Button text="社交" tap="onFilterCategory" class="category-btn {{ selectedCategory === 'social' ? 'category-btn-active' : '' }}" />
+                <Button text="音乐" tap="onFilterCategory" class="category-btn {{ selectedCategory === 'music' ? 'category-btn-active' : '' }}" />
+            </StackLayout>
+        </ScrollView>
+
+        <!-- 应用列表 -->
+        <ListView row="2" items="{{ applications }}" class="list-group" separatorColor="transparent">
+            <ListView.itemTemplate>
+                <GridLayout columns="auto, *, auto" class="bg-gray-700 rounded-lg p-3 mb-3 mx-2">
+                    <Image col="0" src="{{ icon }}" class="w-12 h-12 rounded-lg mr-3" />
+                    <Label col="1" text="{{ name }}" class="font-semibold text-white" verticalAlignment="center" />
+                    <GridLayout col="2" rows="auto" columns="auto" verticalAlignment="center">
+                        <Button row="0" col="0" 
+                               text="{{ isInstalled ? '已安装' : (isInstalling ? '安装中...' : '安装') }}" 
+                               class="{{ isInstalled ? 'bg-gray-500' : (isInstalling ? 'bg-yellow-500' : 'bg-blue-500') }} text-white text-sm p-1 rounded-lg" 
+                               tap="onInstallApp"
+                               isEnabled="{{ !isInstalling }}" />
+                        <ActivityIndicator row="0" col="0" busy="{{ isInstalling }}" class="activity-indicator" visibility="{{ isInstalling ? 'visible' : 'collapsed' }}" />
+                    </GridLayout>
+                </GridLayout>
+            </ListView.itemTemplate>
+            <ListView.itemsLayout>
+                <StackLayout orientation="vertical" spacing="8" />
+            </ListView.itemsLayout>
+        </ListView>
+
+        <!-- 发现更多应用 -->
+        <Button row="3" text="发现更多应用" tap="onDiscoverMoreApps" 
+                class="bg-blue-500 text-white mt-4 p-3 rounded-lg" />
+
+        <!-- 空状态 -->
+        <StackLayout row="2" class="bg-gray-900 rounded-xl shadow-md p-4" 
+                     horizontalAlignment="center" verticalAlignment="center"
+                     visibility="{{ applications.length === 0 ? 'visible' : 'collapsed' }}">
+            <Label text="📱" class="icon-lg" horizontalAlignment="center" />
+            <Label text="没有找到应用" class="text-lg text-white" horizontalAlignment="center" marginTop="16" />
+            <Label text="尝试使用其他关键词搜索" class="text-gray-400 text-sm" horizontalAlignment="center" marginTop="8" />
+        </StackLayout>
+
+        <!-- 加载指示器 -->
+        <GridLayout row="2" horizontalAlignment="center" verticalAlignment="center" 
+                   visibility="{{ isLoading ? 'visible' : 'collapsed' }}">
+            <ActivityIndicator busy="{{ isLoading }}" class="activity-indicator" />
+        </GridLayout>
+    </GridLayout>
+</Page>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+  <ActionBar title="使用数据" class="action-bar">
+    <NavigationButton visibility="collapsed" />
+    <Label text="使用数据" class="action-bar-title" />
+    <ActionItem ios.position="right" android.position="right" tap="onRefreshData">
+      <Label text="&#xf021;" class="fas refresh-icon" />
+    </ActionItem>
+  </ActionBar>
+
+  <GridLayout rows="auto, *" class="container">
+    <!-- 时间段选择 -->
+    <StackLayout row="0" orientation="horizontal" class="tab-view m-b-10">
+      <Button text="今天" id="today" tap="onPeriodChange" 
+              class="{{ selectedPeriod === 'today' ? 'tab-button active' : 'tab-button' }}" />
+      <Button text="本周" id="week" tap="onPeriodChange"
+              class="{{ selectedPeriod === 'week' ? 'tab-button active' : 'tab-button' }}" />
+      <Button text="本月" id="month" tap="onPeriodChange"
+              class="{{ selectedPeriod === 'month' ? 'tab-button active' : 'tab-button' }}" />
+    </StackLayout>
+
+    <!-- 应用使用数据列表 -->
+    <ScrollView row="1">
+      <StackLayout class="p-10">
+        <ListView items="{{ usageData }}" class="list-group">
+          <ListView.itemTemplate>
+            <GridLayout rows="auto, auto" columns="auto, *, auto" class="list-group-item p-10">
+              <!-- 应用图标 -->
+              <Image src="{{ icon }}" rowSpan="2" col="0" width="40" height="40" class="app-icon" />
+              
+              <!-- 应用名称和最后使用时间 -->
+              <StackLayout row="0" col="1" class="app-info">
+                <Label text="{{ appName }}" class="app-name" />
+                <Label text="{{ $parents['ListView'].formatLastUsed(lastUsed) }}" class="last-used text-muted" />
+              </StackLayout>
+              
+              <!-- 使用时长 -->
+              <Label text="{{ $parents['ListView'].formatUsageTime(usageTime) }}" 
+                     row="0" col="2" class="usage-time" />
+              
+              <!-- 豆包特有：Token数量 -->
+              <StackLayout row="1" col="1" colSpan="2" class="token-info"
+                         visibility="{{ appName === '豆包' ? 'visible' : 'collapsed' }}">
+                <Label text="{{ 'Token数量：' + tokenCount }}" class="token-count" />
+              </StackLayout>
+              
+              <!-- 使用历史图表 -->
+              <GridLayout row="1" col="1" colSpan="2" class="usage-history"
+                        visibility="{{ appName !== '豆包' ? 'visible' : 'collapsed' }}">
+                <Repeater items="{{ usageHistory }}">
+                  <Repeater.itemTemplate>
+                    <StackLayout class="history-bar">
+                      <Progress value="{{ duration }}" maxValue="100" class="history-progress" />
+                      <Label text="{{ $parents['ListView'].formatUsageTime(duration) }}" 
+                             class="history-label" />
+                    </StackLayout>
+                  </Repeater.itemTemplate>
+                </Repeater>
+              </GridLayout>
+            </GridLayout>
+          </ListView.itemTemplate>
+        </ListView>
+
+        <ActivityIndicator busy="{{ isLoading }}" class="activity-indicator"/>
+      </StackLayout>
+    </ScrollView>
+  </GridLayout>
+</Page>

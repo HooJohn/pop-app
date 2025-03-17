@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabView xmlns="http://schemas.nativescript.org/tns.xsd" selectedIndex="0" androidTabsPosition="bottom" iosIconRenderingMode="alwaysOriginal" class="bg-gray-800">
+    <TabView.items>
+        <TabViewItem title="首页">
+            <Frame defaultPage="views/Home" />
+        </TabViewItem>
+        <TabViewItem title="应用">
+            <Frame defaultPage="views/Applications" />
+        </TabViewItem>
+        <TabViewItem title="设备">
+            <Frame defaultPage="views/Device" />
+        </TabViewItem>
+        <TabViewItem title="我的">
+            <Frame defaultPage="views/Profile" />
+        </TabViewItem>
+    </TabView.items>
+</TabView>

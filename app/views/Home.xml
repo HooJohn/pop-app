@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <GridLayout rows="auto, auto" class="container">
+        <!-- 设备概览卡片 -->
+        <StackLayout row="0" class="bg-gray-900 rounded-xl shadow-md mb-4 p-4">
+            <Label text="设备概览" class="text-lg mb-4" />
+            <GridLayout rows="auto, auto" columns="*" rowSpacing="16">
+                <GridLayout row="0" columns="auto, *" class="bg-gray-700 rounded-lg p-4 mb-4">
+                    <StackLayout orientation="horizontal" col="0">
+                        <Label text="📱" class="icon-lg mr-3 text-blue-500" />
+                        <StackLayout>
+                            <Label text="{{ installedSoftwareCount || '0' }}" class="text-xl font-bold text-white" />
+                            <Label text="个软件" class="text-sm text-gray-400" />
+                        </StackLayout>
+                    </StackLayout>
+                    <Label text="已安装" col="1" horizontalAlignment="right" verticalAlignment="center" class="text-gray-400" />
+                </GridLayout>
+                <GridLayout row="1" columns="auto, *" class="bg-gray-700 rounded-lg p-4">
+                    <StackLayout orientation="horizontal" col="0">
+                        <Label text="🚀" class="icon-lg mr-3 text-green-500" />
+                        <StackLayout>
+                            <Label text="{{ connectedDevicesCount || '0' }}" class="text-xl font-bold text-white" />
+                            <Label text="个设备" class="text-sm text-gray-400" />
+                        </StackLayout>
+                    </StackLayout>
+                    <Label text="已连接" col="1" horizontalAlignment="right" verticalAlignment="center" class="text-gray-400" />
+                </GridLayout>
+            </GridLayout>
+        </StackLayout>
+
+        <!-- 豆包今日卡片（包含快速操作） -->
+        <StackLayout row="1" class="bg-gray-900 rounded-xl shadow-md p-4">
+            <Label text="豆包 今日" class="text-lg mb-4" />
+            
+            <!-- 使用数据 -->
+            <GridLayout rows="auto, auto" columns="*" rowSpacing="16" class="mb-4">
+                <GridLayout row="0" columns="auto, *" class="bg-gray-700 rounded-lg p-4 mb-4">
+                    <StackLayout orientation="horizontal" col="0">
+                        <Label text="⏱️" class="icon-lg mr-3 text-purple-500" />
+                        <Label text="使用时长" class="font-semibold text-white" />
+                    </StackLayout>
+                    <Label text="{{ doubaoUsageTime || '0分钟' }}" col="1" horizontalAlignment="right" class="font-semibold text-white" />
+                </GridLayout>
+                <GridLayout row="1" columns="auto, *" class="bg-gray-700 rounded-lg p-4">
+                    <StackLayout orientation="horizontal" col="0">
+                        <Label text="💰" class="icon-lg mr-3 text-yellow-500" />
+                        <Label text="Token 使用" class="font-semibold text-white" />
+                    </StackLayout>
+                    <Label text="{{ doubaoTokenUsage || '0' }}" col="1" horizontalAlignment="right" class="font-semibold text-white" />
+                </GridLayout>
+            </GridLayout>
+            
+            <!-- 快速操作 -->
+            <Label text="快速操作" class="text-md mb-3" />
+            <GridLayout rows="auto, auto" columns="*, *" rowSpacing="12" columnSpacing="12">
+                <GridLayout row="0" col="0" tap="onDeviceStatusTap" class="bg-gray-700 rounded-lg p-3 scale-button" height="60" margin="2">
+                    <StackLayout orientation="horizontal" verticalAlignment="center" horizontalAlignment="center">
+                        <Label text="🔴" class="icon-md mr-2" />
+                        <Label text="关闭" class="text-white" />
+                    </StackLayout>
+                </GridLayout>
+                <GridLayout row="0" col="1" tap="onUsageStatsTap" class="bg-gray-700 rounded-lg p-3 scale-button" height="60" margin="2">
+                    <StackLayout orientation="horizontal" verticalAlignment="center" horizontalAlignment="center">
+                        <Label text="📊" class="icon-md mr-2" />
+                        <Label text="开启" class="text-white" />
+                    </StackLayout>
+                </GridLayout>
+                <GridLayout row="1" col="0" tap="onScanQRCode" class="bg-gray-700 rounded-lg p-3 scale-button" height="60" margin="2">
+                    <StackLayout orientation="horizontal" verticalAlignment="center" horizontalAlignment="center">
+                        <Label text="🎵" class="icon-md mr-2" />
+                        <Label text="音色" class="text-white" />
+                    </StackLayout>
+                </GridLayout>
+                <GridLayout row="1" col="1" tap="onSettings" class="bg-gray-700 rounded-lg p-3 scale-button" height="60" margin="2">
+                    <StackLayout orientation="horizontal" verticalAlignment="center" horizontalAlignment="center">
+                        <Label text="⚙️" class="icon-md mr-2" />
+                        <Label text="设置" class="text-white" />
+                    </StackLayout>
+                </GridLayout>
+            </GridLayout>
+        </StackLayout>
+    </GridLayout>
+</Page>

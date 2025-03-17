@@ -43,5 +43,28 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>此应用需要访问相机来扫描二维码</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+		<string>bluetooth-central</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>此应用需要使用蓝牙来扫描和连接设备</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>此应用需要使用蓝牙来扫描和连接设备</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>此应用需要使用位置服务来扫描蓝牙设备</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>此应用需要使用位置服务来扫描蓝牙设备</string>
 </dict>
 </plist>

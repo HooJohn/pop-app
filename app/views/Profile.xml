@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <GridLayout rows="auto, *" class="container">
+        <!-- 用户信息 -->
+        <StackLayout row="0" class="bg-gray-900 rounded-xl shadow-md mb-4 p-4">
+            <GridLayout columns="auto, *" class="mb-4">
+                <Image col="0" src="{{ userAvatar || '~/images/default-avatar.png' }}" class="w-16 h-16 rounded-full mr-4" />
+                <StackLayout col="1" verticalAlignment="center">
+                    <Label text="{{ userName || '用户' }}" class="text-lg font-semibold text-white" />
+                    <Label text="{{ userEmail || 'user@example.com' }}" class="text-gray-400 text-sm" />
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+
+        <!-- 功能列表 -->
+        <ScrollView row="1">
+            <StackLayout>
+                <!-- 我的心愿列表 -->
+                <StackLayout class="bg-gray-900 rounded-xl shadow-md mb-4 p-4">
+                    <Label text="我的心愿" class="text-lg mb-4" />
+                    
+                    <!-- 搜索栏 -->
+                    <SearchBar hint="搜索想要的应用..." text="{{ wishSearchQuery }}" 
+                              submit="onSearchWish" class="bg-gray-700 rounded-lg mb-4" />
+                    
+                    <!-- 热门心愿 -->
+                    <Label text="热门心愿" class="font-semibold text-white mb-3" />
+                    <StackLayout class="mb-4">
+                        <GridLayout columns="*, auto" class="bg-gray-700 rounded-lg p-4 mb-4">
+                            <Label col="0" text="喜马拉雅" class="font-semibold text-white" />
+                            <StackLayout col="1" orientation="horizontal">
+                                <Label text="❤️" class="mr-1" />
+                                <Label text="100" class="text-gray-400" />
+                            </StackLayout>
+                        </GridLayout>
+                        <GridLayout columns="*, auto" class="bg-gray-700 rounded-lg p-4 mb-4">
+                            <Label col="0" text="QQ音乐" class="font-semibold text-white" />
+                            <StackLayout col="1" orientation="horizontal">
+                                <Label text="❤️" class="mr-1" />
+                                <Label text="82" class="text-gray-400" />
+                            </StackLayout>
+                        </GridLayout>
+                        <GridLayout columns="*, auto" class="bg-gray-700 rounded-lg p-4">
+                            <Label col="0" text="听书" class="font-semibold text-white" />
+                            <StackLayout col="1" orientation="horizontal">
+                                <Label text="❤️" class="mr-1" />
+                                <Label text="43" class="text-gray-400" />
+                            </StackLayout>
+                        </GridLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- 设置选项 -->
+                <StackLayout class="bg-gray-900 rounded-xl shadow-md p-4">
+                    <Label text="设置" class="text-lg mb-4" />
+                    <StackLayout class="mb-4">
+                        <Button text="设置" tap="onSettings"
+                                class="bg-gray-700 text-white text-left p-4 rounded-lg mb-4" />
+                        <Button text="关于" tap="onAbout"
+                                class="bg-gray-700 text-white text-left p-4 rounded-lg mb-4" />
+                        <Button text="退出" tap="onLogout"
+                                class="bg-red-500 text-white p-4 rounded-lg" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>

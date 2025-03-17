@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <GridLayout rows="auto, auto" class="container">
+        <!-- 已连接设备 -->
+        <StackLayout row="0" class="bg-gray-900 rounded-xl shadow-md mb-4 p-4">
+            <GridLayout columns="*, auto" rows="auto" class="mb-4">
+                <Label text="已连接设备" col="0" row="0" class="text-lg" />
+                <Button col="1" row="0" text="连接" tap="onConnect" class="bg-blue-500 text-white rounded-lg p-2" />
+            </GridLayout>
+
+            <GridLayout rows="auto" columns="auto, *, auto" class="bg-gray-700 rounded-lg p-4 mb-4">
+                <Label col="0" text="🎧" class="icon-lg text-blue-500 mr-3" />
+                <StackLayout col="1">
+                    <Label text="{{ deviceName || 'POP设备' }}" class="font-semibold text-white" />
+                    <GridLayout columns="auto, auto" marginTop="4">
+                        <Label text="•" col="0" class="{{ isOnline ? 'text-green-500' : 'text-red-500' }}" marginRight="4" />
+                        <Label text="{{ isOnline ? '已连接' : '未连接' }}" col="1" class="{{ isOnline ? 'text-green-500' : 'text-red-500' }} text-sm" />
+                    </GridLayout>
+                </StackLayout>
+                <Label col="2" text="⭐" class="icon-lg text-yellow-500" />
+            </GridLayout>
+            
+            <StackLayout class="bg-gray-700 rounded-lg p-4">
+                <Label text="POP设备简介" class="font-semibold text-white mb-2" />
+                <Label text="POP是一款智能音频设备，支持多种应用和音频格式，提供高品质的声音体验。通过蓝牙连接，可以轻松控制您的音频应用。" textWrap="true" class="text-gray-400 text-sm" />
+            </StackLayout>
+        </StackLayout>
+
+        <!-- 固件信息 -->
+        <StackLayout row="1" class="bg-gray-900 rounded-xl shadow-md p-4">
+            <Label text="固件" class="text-lg mb-4" />
+            <GridLayout columns="*, auto" class="bg-gray-700 rounded-lg p-4">
+                <Label col="0" text="当前版本：v1.2.0" class="font-semibold text-white" />
+                <Button col="1" text="检查更新" tap="onCheckUpdate" 
+                        class="bg-blue-500 text-white p-2 rounded-lg" />
+            </GridLayout>
+        </StackLayout>
+    </GridLayout>
+</Page>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="设置"></ActionBar>
+    <StackLayout class="bg-gray-900 text-white">
+        <StackLayout class="container">
+            <StackLayout class="bg-gray-800 rounded-xl shadow-md mb-6 p-4">
+                <Label text="通知" class="text-lg font-semibold mb-3"></Label>
+                <GridLayout rows="auto, auto, auto" class="space-y-0">
+                    <GridLayout columns="*, auto" class="flex items-center justify-between bg-gray-700 rounded-lg p-3" row="0">
+                        <Label col="0" text="运动提醒"></Label>
+                        <Switch col="1" checked="true"></Switch>
+                    </GridLayout>
+                    <GridLayout columns="*, auto" class="flex items-center justify-between bg-gray-700 rounded-lg p-3" row="1">
+                        <Label col="0" text="睡眠提醒"></Label>
+                        <Switch col="1"></Switch>
+                    </GridLayout>
+                    <GridLayout columns="*, auto" class="flex items-center justify-between bg-gray-700 rounded-lg p-3" row="2">
+                        <Label col="0" text="设备连接"></Label>
+                        <Switch col="1" checked="true"></Switch>
+                    </GridLayout>
+                </GridLayout>
+            </StackLayout>
+
+            <StackLayout class="bg-gray-800 rounded-xl shadow-md mb-6 p-4">
+                <Label text="单位" class="text-lg font-semibold mb-3"></Label>
+                <GridLayout rows="auto, auto" class="space-y-0">
+                    <GridLayout columns="*, auto" class="flex items-center justify-between bg-gray-700 rounded-lg p-3" row="0">
+                        <Label col="0" text="距离"></Label>
+                        <ListPicker col="1" items="{{ distanceUnits }}" selectedIndex="0"></ListPicker>
+                    </GridLayout>
+                    <GridLayout columns="*, auto" class="flex items-center justify-between bg-gray-700 rounded-lg p-3" row="1">
+                        <Label col="0" text="重量"></Label>
+                        <ListPicker col="1" items="{{ weightUnits }}" selectedIndex="0"></ListPicker>
+                    </GridLayout>
+                </GridLayout>
+            </StackLayout>
+
+            <StackLayout class="bg-gray-800 rounded-xl shadow-md p-4">
+                <ListView items="{{ settings }}" class="space-y-2">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="*, auto" class="flex items-center justify-between bg-gray-700 rounded-lg p-3">
+                            <Label col="0" text="{{ title }}"></Label>
+                            <Label col="1" text="&#xf054;" class="fas fa-chevron-right text-gray-400" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</Page>
